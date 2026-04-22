@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  voice-api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - speechbrain-cache:/root/.cache/speechbrain
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+volumes:
+  speechbrain-cache:
