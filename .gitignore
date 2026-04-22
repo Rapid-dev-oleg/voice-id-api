@@ -28,3 +28,6 @@ ENV/
 *.swo
 *~
 .DS_Store
+
+.env
+
